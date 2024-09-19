@@ -48,6 +48,24 @@ class Tsetlin:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def runTestlin():
 
     env = Environment(0.1, 0.3)

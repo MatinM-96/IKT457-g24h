@@ -2,11 +2,14 @@ import random
 
 # Define a simple Tsetlin Automaton
 class TsetlinAutomaton:
+
+
     def __init__(self, n):
         # n is the number of states per action
         self.n = n
         # Start in the middle state (either n or n+1)
         self.state = random.choice([self.n, self.n + 1])
+        print("state", self.state)
 
     # Method to handle a reward
     def reward(self):
@@ -42,7 +45,7 @@ def runCompulsory():
         automaton = TsetlinAutomaton(numberOfState)
         tsetlinAutomaton.append(automaton)
 
-    iteration = 100
+    iteration = 1
 
     for _ in range(iteration):
         yes_count = 0;
@@ -66,6 +69,13 @@ def runCompulsory():
         else:
             rewardProbability = 0
 
+        # Apply rewards or penalties independently for each automaton
+    for automaton in tsetlinAutomaton:
+
+        if random.random() < rewardProbability:
+            automaton.reward()
+        else:
+            automaton.penalize()
 
     countFinalYes = 0
     for automaton in tsetlinAutomaton:
